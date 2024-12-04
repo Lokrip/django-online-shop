@@ -1,0 +1,92 @@
+{% load tag %}
+
+<!-- Filter -->
+<div class="dis-none panel-filter w-full p-t-10">
+    <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
+        <div class="filter-col1 p-r-15 p-b-27">
+            <div class="mtext-102 cl2 p-b-15">
+                Sort By
+            </div>
+
+            <ul>
+                {% for sort_option in sort_options %}
+                    <li class="p-b-6">
+                        <a href="?
+                        {% if colorGet %}color={{ colorGet }}{% endif %}
+                        {% if tagGet %}&product-tags={{ tagGet }}{% endif %}
+                        {% if pricesGet %}&prices={{ pricesGet }}{% endif %}
+                        &sort={{ sort_option.value }}">
+                            {% if sort_option.active %}
+                                <span class="filter-link stext-106 trans-04 filter-link-active">{{ sort_option.label }}</span>
+                            {% else %}
+                                <span class="filter-link stext-106 trans-04">{{ sort_option.label }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="filter-col2 p-r-15 p-b-27">
+            <div class="mtext-102 cl2 p-b-15">
+                Price
+            </div>
+
+            <ul>
+                {% for rangeElement in filterPriceRanges %}
+                    <li class="p-b-6">
+                        <a href="?
+                        {% if colorGet %}color={{ colorGet }}{% endif %}
+                        {% if tagGet %}&product-tags={{ tagGet }}{% endif %}
+                        &prices={{ rangeElement.label|correct_prices }}">
+                            {% if pricesGet == rangeElement.label|correct_prices %}
+                                <span class="filter-link stext-106 trans-04 filter-link-active">{{ rangeElement.label }}</span>
+                            {% else %}
+                                <span class="filter-link stext-106 trans-04">{{ rangeElement.label }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="filter-col3 p-r-15 p-b-27">
+            <div class="mtext-102 cl2 p-b-15">
+                Color
+            </div>
+
+            <ul>
+                {% for color in colors %}
+                    <li class="p-b-6">
+                        <span class="fs-15 lh-12 m-r-6" style="color: {{ color.hex_code }};">
+                            <i class="zmdi zmdi-circle"></i>
+                        </span>
+                        <a href="?
+                        {% if tagGet %}&product-tags={{ tagGet }}{% endif %}
+                        {% if pricesGet %}&prices={{ pricesGet }}{% endif %}
+                        &color={{ color.name }}" class="filter-link stext-106 trans-04">
+                            {{ color.name }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="filter-col4 p-b-27">
+            <div class="mtext-102 cl2 p-b-15">
+                Tags
+            </div>
+
+            <div class="flex-w p-t-4 m-r--5">
+                {% for tag in tags %}
+                    <a href="?
+                    {% if colorGet %}color={{ colorGet }}{% endif %}
+                    {% if pricesGet %}&prices={{ pricesGet }}{% endif %}
+                    &product-tags={{ tag.name }}" class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
+                        {{ tag.name }}
+                    </a>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block addStyle %}
+<style>
+    .container-login {
+        margin-block-start: 30%;
+        margin-block-end: 30%;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .container-login .w-full {
+        max-width: 500px;
+    }
+
+    .container-login .w-full button {
+        width: 100%;
+    }
+
+    .container-login .row.p-b-25 {
+        display: grid;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .container-login .row.p-b-25 .col-sm-6 {
+        width: 500px;
+    }
+
+    .container-login .row.p-b-25 .col-sm-6 input {
+        width: 500px;
+    }
+    
+    .container-login .transition-already {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .container-login .transition-already #register-href {
+        margin-left: 5px;
+    }
+
+
+</style>
+{% endblock addStyle %}
+
+{% block classHeader %}header-v4{% endblock classHeader %}
+
+{% block content %}
+<div class="container container-login">
+    <form class="w-full" action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h5 class="mtext-108 cl2 p-b-7">
+            Create Product
+        </h5>
+    
+        <p class="stext-102 cl6">
+            Your email address will not be published. Required fields are marked
+        </p>
+    
+        <div class="row p-b-25">
+
+            {% for f in form %}
+                <div class="col-sm-6 p-b-5">
+                    <label class="stext-102 cl3" for="{{f.id_label}}">{{f.label}}</label>
+                    {{f}}
+                </div>
+
+            {% endfor %}
+            <div class="col-sm-6 p-b-5">
+                <label class="stext-102 cl3">Image List</label>
+                <input type="file" multiple name="image-list">
+            </div>
+        </div>
+    
+        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+            Submit
+        </button>
+    </form>
+
+
+</div>
+{% endblock content %}

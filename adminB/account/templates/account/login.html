@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block addStyle %}
+<style>
+    .container-login {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .container-login .w-full {
+        max-width: 500px;
+    }
+
+    .container-login .w-full button {
+        width: 100%;
+    }
+
+    .container-login .row.p-b-25 {
+        display: grid;
+        gap: 1rem;
+        width: 100%;
+    }
+
+    .container-login .row.p-b-25 .col-sm-6 {
+        width: 500px;
+    }
+
+    .container-login .row.p-b-25 .col-sm-6 input {
+        width: 500px;
+    }
+    
+    .container-login .transition-already {
+        margin-top: 20px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .container-login .transition-already #register-href {
+        margin-left: 5px;
+    }
+
+
+</style>
+{% endblock addStyle %}
+
+{% block classHeader %}header-v4{% endblock classHeader %}
+
+{% block body %}
+<div class="container container-login">
+    <form class="w-full" action="{% url 'account:login' %}" method="post">
+        {% csrf_token %}
+        <h5 class="mtext-108 cl2 p-b-7">
+            Login
+        </h5>
+    
+        <p class="stext-102 cl6">
+            Your email address will not be published. Required fields are marked
+        </p>
+    
+        <div class="row p-b-25">
+            <div class="col-sm-6 p-b-5">
+                <label class="stext-102 cl3" for="{{form.email.id_label}}">{{form.email.label}}</label>
+                {{form.email}}
+            </div>
+    
+            <div class="col-sm-6 p-b-5">
+                <label class="stext-102 cl3" for="{{form.password.id_label}}">{{form.password.label}}</label>
+                {{form.password}}
+            </div>
+        </div>
+    
+        <button class="flex-c-m stext-101 cl0 size-112 bg7 bor11 hov-btn3 p-lr-15 trans-04 m-b-10">
+            Submit
+        </button>
+    </form>
+
+    <div class="transition-already">
+        <p class="stext-102 cl6">
+            New to User?
+        </p>
+        <a href="{% url 'account:register' %}" id="register-href" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+            Sign Up
+        <a>
+    </div>
+
+
+</div>
+{% endblock body %}

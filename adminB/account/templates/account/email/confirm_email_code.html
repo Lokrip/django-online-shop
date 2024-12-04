@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block addStyle %}
+<style>
+    .confirm-wrapper {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <div class="confirm-wrapper">
+            <form method="post" class="form-email-confirm-code">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit">Отправить</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

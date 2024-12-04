@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block classHeader %}header-v4{% endblock classHeader %}
+
+{% block content %}
+<section class="checkout_area section_padding">
+    <div class="container">
+      <div class="billing_details">
+        <form action="{% url 'cart:checkout' %}" method="post" class="row">
+          {% csrf_token %}
+          <div class="col-lg-8">
+            <h3 style="margin-block: 35px;">Billing Details</h3>
+            <div class="row contact_form">
+              {% for f in form %}
+                <div class="col-md-6 form-group p_star">
+                  {{f}}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="order_box">
+              <h2>Your Order</h2>
+              <ul class="list">
+                <li>
+                  Product
+                  <span>Total</span>
+                </li>
+                {% for orderItem in orderItems %}
+                  <li>
+                    <a href="{{orderItem.product.get_absolute_url}}">{{orderItem.product.title}}
+                      <span class="middle">x {{orderItem.quantity}}</span>
+                      <span class="last">${{orderItem.total_price}}</span>
+                    </a>
+                  </li>
+                {% endfor %}
+
+              </ul>
+              <ul class="list list_2">
+                <li>
+                  Total
+                  <span>${{order.total_price}}</span>
+                </li>
+              </ul>
+              <div class="payment_item">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option5" name="selector">
+                  <label for="f-option5">Check payments</label>
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+              <div class="payment_item active">
+                <div class="radion_btn">
+                  <input type="radio" id="f-option6" name="selector">
+                  <label for="f-option6">Paypal </label>
+                  <img src="img/product/single-product/card.jpg" alt="">
+                  <div class="check"></div>
+                </div>
+                <p>
+                  Please send a check to Store Name, Store Street, Store Town,
+                  Store State / County, Store Postcode.
+                </p>
+              </div>
+              <div class="creat_account">
+                <input type="checkbox" id="f-option4" name="selector">
+                <label for="f-option4">I’ve read and accept the </label>
+                <a href="#">terms &amp; conditions*</a>
+              </div>
+              <button type="submit" style="margin-block: 20px;" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+                Proceed to Paypal
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+</section>
+
+
+{% endblock content %}

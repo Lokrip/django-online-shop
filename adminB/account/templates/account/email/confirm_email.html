@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Подтвердите ваш email</title>
+    <style>
+        *,
+        *::after,
+        *::before {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        li {list-style: none;}
+
+        a,
+        img,
+        span,
+        input,
+        select,
+        button {display: block;}
+
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        input,
+        button,
+        select {
+            background: none;
+            border: none;
+            font: inherit;
+        }
+
+        button {cursor: pointer;}
+
+        input,
+        select {
+            width: 100%;
+            outline: none;
+        }
+
+        address {font-style: normal;}
+
+        select {
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+        }
+
+
+        html {
+            font-family: 'Kanit', sans-serif;
+            font-size: 18px;
+        }
+
+        body {
+            color: black;
+            font-family: 'Poppins', sans-serif;
+            background-color: rgb(235, 241, 255);
+        }
+
+        .container {
+            height: 100vh;
+            max-width: 900px;
+            margin: 0 auto;
+            padding-inline: 20px;
+        }
+
+        .container  .card-wrapper {
+            margin-block: 25px;
+            margin-inline: 10px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            height: 100%;
+        }
+
+        .container .card-wrapper .card h1 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            font-weight: 600;
+            line-height: 35px;
+        }
+
+        .container .card-wrapper .card .random-numbers {
+            margin-bottom: 20px;
+            font-size: 15px;
+            font-weight: 600;
+            line-height: 35px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card-wrapper">
+            <div class="card">
+                <h1>Подтвердите ваш email</h1>
+                <p class="random-numbers">Ваш код подтверждения: <strong>{{ random_numbers }}</strong></p>
+                <p class="end-confirm">Спасибо, что выбрали нас!</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
