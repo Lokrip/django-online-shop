@@ -254,21 +254,6 @@ LOGIN_REDIRECT_URL = '/'
 
 LOGIN_URL = '/account/login/'
 
-# # Глобальные настройки пакета
-# EMAIL_FROM_ADDRESS = 'slavadorohov499@gmail.com'  # Email-адрес, с которого будут отправляться письма для подтверждения. Обязательно для отправки email.
-# EMAIL_PAGE_DOMAIN = 'http://127.0.0.1:8000/'  # Домен, на котором работает приложение. Обязательно, если не используется кастомная ссылка.
-# EMAIL_MULTI_USER = False  # Указывает, могут ли несколько пользователей использовать один и тот же email для подтверждения. По умолчанию False.
-
-# # Настройки подтверждения email (обязательно для отправки email)
-# EMAIL_MAIL_SUBJECT = 'Confirm your email {{ user.username }}'  # Тема письма для подтверждения, включает имя пользователя.
-# EMAIL_MAIL_HTML = 'account/email/mail_body.html'  # Путь к HTML-шаблону, используемому для тела письма.
-# EMAIL_MAIL_PLAIN = 'account/email/mail_body.txt'  # Путь к текстовому шаблону, используемому для тела письма.
-# EMAIL_MAIL_TOKEN_LIFE = 60 * 60  # Время жизни токена подтверждения, установлено на один час (в секундах).
-
-# # Настройки подтверждения email (обязательно для встроенного представления)
-# EMAIL_MAIL_PAGE_TEMPLATE = 'account/email/email_success_template.html'  # Шаблон, который будет отображаться после успешного подтверждения email.
-# EMAIL_MAIL_CALLBACK = email_verified_callback  # Функция обратного вызова, которая будет вызвана после успешного подтверждения email пользователя.
-
 # Настройки почтового сервера
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'  # Указывает бэкенд, используемый для отправки email, здесь используется SMTP.
 EMAIL_HOST = 'smtp.gmail.com'  # SMTP-сервер, который будет использоваться для отправки писем (SMTP-сервер Gmail).
