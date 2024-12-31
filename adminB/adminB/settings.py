@@ -29,7 +29,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["app-task1-ae9694ef0055.herokuapp.com"]
 
 
 # # Этот параметр указывает, какие источники (домен/порт) 
